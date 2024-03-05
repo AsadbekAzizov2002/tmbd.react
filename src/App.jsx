@@ -11,6 +11,7 @@ const App = () => {
   return (
     <div className="  bg-[#141414]">
       <Navbar />
+      
     </div>
   );
 };
