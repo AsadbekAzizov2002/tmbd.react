@@ -1,7 +1,3 @@
-import logo from "../assets/Logo.png";
-import vector from "../assets/vektor1.svg";
-import vector2 from "../assets/vector2.svg";
-import button from "../assets/Button.svg";
 import button2 from "../assets/button2.svg";
 import button3 from "../assets/button3.svg";
 import shape from "../assets/Shape.svg";
@@ -12,58 +8,13 @@ import xome_Icon4 from "../assets/xome_Icon4.svg";
 import xome_Icon5 from "../assets/xome_Icon5.svg";
 import xome_Icon6 from "../assets/xome_Icon6.svg";
 
-import { NavLink, Route, Routes } from "react-router-dom";
-import Movie from "./Movie";
-import Support from "./Support";
-import Subscription from "./Subscription";
-import Home from "./Home";
+import Footer from "../Footer";
 
 const Homes = () => {
   return (
     <div>
-      <div className=" container mx-auto max-w-[1500px] px-5 ">
+      <div className=" container mx-auto max-w-[1400px] px-5 ">
         <div className=" header container bg-[#141414] px-5 ">
-          <div className=" flex items-center justify-between">
-            <img src={logo} alt="logo" />
-            <div className="sm:hidden md:hidden lg:flex">
-              <nav>
-                <ul className="md:text-hidden flex gap-7 space-x-3 rounded-md border-black bg-[#0F0F0F] pl-[10px] pr-10 text-white sm:hidden md:flex">
-                  <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
-                    <NavLink to={"./home"}>Home</NavLink>
-                  </li>
-
-                  <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
-                    <NavLink to={"./movies"}>Movies</NavLink>
-                  </li>
-                  <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
-                    <NavLink to={"./support"}>Support</NavLink>
-                  </li>
-                  <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
-                    <NavLink to={"./subscriptions"}>Subscriptions</NavLink>
-                  </li>
-                </ul>
-              </nav>
-              <input
-                className="rounded bg-inherit p-4 text-white"
-                type="search"
-                name="search"
-                placeholder="search ...."
-              />
-              <Routes>
-                <Route path="./home" element={<Home />} />
-                <Route path="./movies" element={<Movie />} />
-                <Route path="./support" element={<Support />} />
-                <Route path="./subscription" element={<Subscription />} />
-              </Routes>
-            </div>
-            <div className="gap-4 sm:hidden md:flex">
-              <img src={vector} alt="icon" />
-              <img src={vector2} alt="icon" />
-            </div>
-            <div className=" sm:block md:hidden">
-              <img src={button} alt="img" />
-            </div>
-          </div>
           <div className=" sm:pt-[200px] md:pt-[500px]">
             <h1 className=" xl:mt[191px] cl:flex text-center	 text-white md:text-base xl:ml-auto xl:mr-auto xl:w-[1096px] xl:justify-center xl:text-6xl  xl:font-bold">
               The Best Streaming Experience
@@ -295,7 +246,7 @@ const Homes = () => {
               </div>
             </div>
             <div className=" w-[680px] sm:mb-[48px]">
-              <div className="  w-[358px] py-4 md:w-[750px]">
+              <div className="  w-[358px] py-4 md:w-[650px]">
                 <div className=" flex items-center gap-5">
                   <button className=" font-xl bg-[#1F1F1F] p-4 font-bold text-white">
                     05
@@ -306,7 +257,7 @@ const Homes = () => {
                   <button className=" w-6 pr-5 text-white">+</button>
                 </div>
               </div>
-              <div className=" w-[358px] py-4 md:w-[750px]">
+              <div className=" w-[358px] py-4 md:w-[650px]">
                 <div className=" flex items-center gap-5">
                   <button className=" font-xl bg-[#1F1F1F] p-4 font-bold text-white">
                     06
@@ -317,7 +268,7 @@ const Homes = () => {
                   <button className=" w-6 pr-5 text-white">+</button>
                 </div>
               </div>
-              <div className=" w-[358px] py-4 md:w-[750px]">
+              <div className=" w-[358px] py-4 md:w-[650px]">
                 <div className=" flex items-center gap-5">
                   <button className=" font-xl bg-[#1F1F1F] p-4 font-bold text-white">
                     07
@@ -328,7 +279,7 @@ const Homes = () => {
                   <button className=" w-6 pr-5 text-white">+</button>
                 </div>
               </div>
-              <div className=" w-[358px] py-4 md:w-[750px]">
+              <div className=" w-[358px] py-4 md:w-[650px]">
                 <div className=" flex items-center gap-5">
                   <button className=" font-xl bg-[#1F1F1F] p-4 font-bold text-white">
                     08
@@ -438,31 +389,7 @@ const Homes = () => {
               </div>
             </div>
           </div>
-          <div className=" mt-[83px] md:flex md:h-[344px] md:items-center">
-            <div>
-              <h2 className=" mb-[10px] w-[160px] font-bold text-white md:w-[900px]">
-                Start your free trial today !
-              </h2>
-              <p className=" mb-[60px] w-[300px] font-normal text-[#999999] md:w-[900px]">
-                This is a clear and concise call to action that encourages users
-                to sign upfors free trial of StreamVibe,
-              </p>
-            </div>
-            <div>
-              <button className=" rounded bg-red-600 px-8 py-3 text-white">
-                Start a Free Trail
-              </button>
-            </div>
-          </div>
-          <div>
-            <div>
-              <h2>Home</h2>
-              <p>Categories</p>
-              <p>Devices</p>
-              <p>Pricing</p>
-              <p>FAQ</p>
-            </div>
-          </div>
+          <Footer />
         </div>
       </div>
     </div>
