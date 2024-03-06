@@ -15,6 +15,7 @@ const SingleMovie = () => {
           api_key: "4b7feb4a7688c3c46324165839ad0ffd",
         },
       });
+      console.log(response);
       setSengilMovie(response.data);
     } catch (error) {
       console.error(error.massage);
@@ -36,3 +37,8 @@ const SingleMovie = () => {
 };
 
 export default SingleMovie;
+
+
+
+
+// rasmni ustiga bosganda shu qismda korinadi

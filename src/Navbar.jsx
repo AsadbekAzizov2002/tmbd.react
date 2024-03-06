@@ -31,11 +31,10 @@ const Navbar = ({ setSearchedMovies }) => {
         throw new Error("Could not get genre movie list ");
       setSearchedMovies(res.data.results);
     } catch (error) {
-      console.error(error);
+      console.error(error.massageheader-item );
     }
   };
 
-  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     handleSearch();
@@ -48,17 +47,17 @@ const Navbar = ({ setSearchedMovies }) => {
           <div className="sm:hidden md:hidden lg:flex">
             <nav className=" ">
               <ul className="md:text-hidden flex gap-7 space-x-3 rounded-md border-black bg-[#0F0F0F] pl-[10px] pr-10 text-white sm:hidden md:flex">
-                <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
+                <li className="header-item cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
                   <NavLink to="/">Home</NavLink>
                 </li>
 
-                <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
+                <li className="header-item cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
                   <NavLink to="/movies">Movies</NavLink>
                 </li>
-                <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
+                <li className="header-item cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
                   <NavLink to="/support">Support</NavLink>
                 </li>
-                <li className="cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
+                <li className="header-item cursor-pointer py-6 hover:text-amber-400 active:text-blue-500">
                   <NavLink to="/subscriptions">Subscriptions</NavLink>
                 </li>
               </ul>

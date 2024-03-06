@@ -7,7 +7,7 @@ const MoviesOpn = ({ searchedMovies }) => {
     <div>
       {searchedMovies.map((movie) => (
         <NavLink to={`/movie/${movie.id}`} key={movie.id}>
-          <div>
+          <div key={movie.id}>
             <img
               src={`https:media.themoviedb.org/t/p/w200_and_h330_face/${movie.poster_path}`}
               alt="img"
@@ -22,3 +22,5 @@ const MoviesOpn = ({ searchedMovies }) => {
 };
 
 export default MoviesOpn;
+
+// search bolganda shu bulimda korinadi

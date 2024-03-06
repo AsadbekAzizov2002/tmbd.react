@@ -12,6 +12,7 @@ import xome_Icon6 from "../assets/xome_Icon6.svg";
 import Footer from "../Footer";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../constants/constants";
+import { NavLink } from "react-router-dom";
 
 const Homes = () => {
   const [movies, setMovies] = useState([]);
@@ -86,12 +87,14 @@ const Homes = () => {
               <div className=" p-5 ">
                 <div className=" mt-[30px] grid h-[350px] w-[305px] grid-cols-10 grid-rows-2 gap-3 md:h-[500px] md:w-[1200px]">
                   {movies.map((movie) => (
-                    <div key={movie.id} className=" grid ">
-                      <img
-                        src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
-                        alt=""
-                      />
-                    </div>
+                    <NavLink to={`/movie/${movie.id}`} key={movie.id}>
+                      <div key={movie.id} className=" grid ">
+                        <img
+                          src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+                          alt=""
+                        />
+                      </div>
+                    </NavLink>
                   ))}
                 </div>
               </div>

@@ -23,7 +23,7 @@ const Shous = () => {
   return (
     <div>
       {genres.map((genre) => (
-        <h1>{genre.name}</h1>
+        <h1 className=" text-white p-5 bg-zinc-600">{genre.name}</h1>
       ))}
     </div>
   );
