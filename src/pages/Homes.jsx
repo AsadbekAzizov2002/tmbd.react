@@ -1,3 +1,4 @@
+import axios from "axios";
 import button2 from "../assets/button2.svg";
 import button3 from "../assets/button3.svg";
 import shape from "../assets/Shape.svg";
@@ -9,13 +10,42 @@ import xome_Icon5 from "../assets/xome_Icon5.svg";
 import xome_Icon6 from "../assets/xome_Icon6.svg";
 
 import Footer from "../Footer";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../constants/constants";
 
 const Homes = () => {
+  const [movies, setMovies] = useState([]);
+  console.log(movies);
+  const fetchMovie = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/movie/popular`, {
+        params: {
+          api_key: "4b7feb4a7688c3c46324165839ad0ffd",
+        },
+      });
+      setMovies(response.data.results);
+    } catch (error) {
+      console.error(error.massage);
+    }
+  };
+  useEffect(() => {
+    fetchMovie();
+  }, []);
   return (
     <div>
       <div className=" container mx-auto max-w-[1400px] px-5 ">
-        <div className=" header container bg-[#141414] px-5 ">
-          <div className=" sm:pt-[200px] md:pt-[500px]">
+        <div className=" header container w-[365px] bg-[#141414] bg-[url('../assets/sub.png')] bg-cover bg-no-repeat px-5 md:w-[1100px] ">
+          <div className=" grid grid-cols-6 gap-5">
+            {movies.map((movie) => (
+              <div key={movie.id}>
+                <img
+                  src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.backdrop_path}`}
+                  alt=""
+                />
+              </div>
+            ))}
+          </div>
+          <div className="h sm:pt-[200px] md:w-[1000px] md:pt-[100px]">
             <h1 className=" xl:mt[191px] cl:flex text-center	 text-white md:text-base xl:ml-auto xl:mr-auto xl:w-[1096px] xl:justify-center xl:text-6xl  xl:font-bold">
               The Best Streaming Experience
             </h1>
@@ -52,15 +82,23 @@ const Homes = () => {
                 </button>
               </div>
             </div>
-            <div className=" flex">
-              <div className=" h-[342px] w-[250px]"></div>
-              <div className=" h-[342px] w-[250px]"></div>
-              <div className=" h-[342px] w-[250px]"></div>
-              <div className=" h-[342px] w-[250px]"></div>
-              <div className=" h-[342px] w-[250px]"></div>
+            <div className=" grid grid-cols-1">
+              <div className=" p-5 ">
+                <div className=" mt-[30px] grid h-[350px] w-[305px] grid-cols-10 grid-rows-2 gap-3 md:h-[500px] md:w-[1200px]">
+                  {movies.map((movie) => (
+                    <div key={movie.id} className=" grid ">
+                      <img
+                        src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+                        alt=""
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className=" "></div>
             </div>
           </div>
-          <div className=" md:flex md:items-center md:justify-between">
+          <div className=" mt-[30px] md:flex md:items-center md:justify-between">
             <div>
               <h1 className=" font-bold text-white sm:w-[361px] sm:text-xl md:mb-[10px] md:w-[900px] md:text-2xl	">
                 We Provide you streaming experience across various devices.

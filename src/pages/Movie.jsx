@@ -10,24 +10,24 @@ import button3 from "../assets/button3.svg";
 import Footer from "../Footer";
 
 const Movie = () => {
-  const [movies, setMovies] = useState([]);
-  const fetchMovie = async () => {
+  const [genres, setGenres] = useState([]);
+  console.log(genres);
+  const fetGenres = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}movie/popular`, {
+      const res = await axios.get(`${BASE_URL}/genre/movie/list`, {
         params: {
           api_key: "4b7feb4a7688c3c46324165839ad0ffd",
         },
       });
-      console.log(response);
-      console.log();
-
-      setMovies(response.data.results);
+      if (res.status !== 200) throw new Error("Coul not get genre movie list");
+      setGenres(res.data.genres);
     } catch (error) {
-      console.error(error.message);
+      console.error(error.massage);
     }
   };
+
   useEffect(() => {
-    fetchMovie();
+    fetGenres();
   }, []);
   return (
     <div className="bg container mx-auto max-w-[1400px]  px-5">
@@ -637,18 +637,16 @@ const Movie = () => {
                 </div>
               </div>
             </div>
-            <Footer/>
+            <Footer />
           </div>
         </div>
       </div>
       <div className=" container grid grid-cols-4 px-10 lg:w-[1420px]">
-        {/* {movies.map((movie) => (
-          <div key={movie.id}>
-            <img src={movie.poster_path} alt="img" />
-            <h2>{movie.orginal_title}</h2>
-            <p>{movie.release_date}</p>
+        {genres.map((genre) => (
+          <div key={genres.id}>
+            <h1>{genre.name}</h1>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );

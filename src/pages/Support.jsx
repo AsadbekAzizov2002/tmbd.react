@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import nam from "../assets/nam.svg";
 import Footer from "../Footer";
+import sub from "../assets/sub.png";
 
 const Support = () => {
   return (
     <div>
-      <NavLink />
-      <div className=" container items-center md:flex">
+      <div className=" container items-center px-4 md:flex">
         <div>
           <h1 className=" mb-[10px] mt-20 w-[300px] text-2xl font-bold text-white md:mt-[100px]  md:w-[400px] md:text-4xl lg:w-[500px]	 lg:text-5xl">
             Welcome to our support page!
@@ -15,7 +15,9 @@ const Support = () => {
             We're here to help you with any problems you may be having with our
             product.
           </p>
-          <div className=" h-[371px] w-[350px]"></div>
+          <div className=" h-[371px] w-[350px]">
+            <img src={sub} alt="" />
+          </div>
         </div>
         <div className="md:ml-[50px] ">
           <div className=" mg:grid md:ml-[50px]  md:grid md:w-[800px]">
@@ -213,7 +215,7 @@ const Support = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

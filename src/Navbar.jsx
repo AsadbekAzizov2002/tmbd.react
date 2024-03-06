@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./assets/Logo.png";
 import vektor from "./assets/vector2.svg";
@@ -8,8 +8,38 @@ import Movie from "./pages/Movie";
 import Support from "./pages/Support";
 import Subscription from "./pages/Subscription";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "./constants/constants";
 
-const Navbar = () => {
+const Navbar = ({ setSearchedMovies }) => {
+  const inputField = useRef(null);
+  const [inputValue, setIputValue] = useState(null);
+
+  const handeleChangeSearch = (e) => {
+    setIputValue(e.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/search/movie`, {
+        params: {
+          api_key: "4b7feb4a7688c3c46324165839ad0ffd",
+          query: inputValue,
+        },
+      });
+      if (res.status !== 200)
+        throw new Error("Could not get genre movie list ");
+      setSearchedMovies(res.data.results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [inputValue]);
   return (
     <div>
       <div className=" container mx-auto w-[1360px] bg-[#141414] px-5">
@@ -38,6 +68,8 @@ const Navbar = () => {
               type="search"
               name="search"
               id="search"
+              ref={inputField}
+              onChange={handeleChangeSearch}
               placeholder="search ...."
             />
           </div>
@@ -50,12 +82,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <Routes>
-        <Route path="/" element={<Homes />} />
-        <Route path="/movies" element={<Movie />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/subscriptions" element={<Subscription />} />
-      </Routes>
     </div>
   );
 };
